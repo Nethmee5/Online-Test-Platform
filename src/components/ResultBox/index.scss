@@ -1,0 +1,50 @@
+.result-container {
+     width: 100%;
+     justify-content: center;
+
+.result-list {
+    display: flex;
+    flex-wrap: wrap; 
+    padding: 100px;
+    font-weight: bold;
+    background-color: #D9D9D9; 
+    justify-content: center;
+    width: 800px;
+    height: 50vh; 
+    box-sizing: border-box; 
+  }
+  
+  .result-list > div {
+    width: 50%;       
+    margin-bottom: 10px; 
+  }
+  
+  .name, .score {
+    font-weight: bold; 
+    padding-top: 10px;
+  }
+
+  .display-name, .display-score{
+  background-color: #fff;
+  height: 25px;
+  text-align: center;
+  padding-top: 10px;
+  }
+  .btn-exit{
+        display: flex;
+        width: 80px;
+        height: 10px;
+        border-radius: 12px;
+        border: none;
+        background-color:#000; 
+        color: #fff;
+        font-weight: bold;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 20px;
+        font-size: 15px;
+        cursor: pointer;
+        margin-top: 10px;
+  }
+}

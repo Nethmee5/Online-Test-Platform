@@ -1,0 +1,18 @@
+import React from 'react';
+import './index.scss';
+
+const ResultBox = () => {
+  return (
+    <div className="result-container">
+      <div className="result-list">
+        <div className="name">Name :</div>
+        <div className="display-name">Nethmee Kumararatne</div>
+        <div className="score">score : </div>
+        <div className="display-score">100</div>
+        <button className="btn-exit">Exit</button>
+      </div>
+    </div>
+  );
+};
+
+export default ResultBox;
