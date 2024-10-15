@@ -1,0 +1,61 @@
+.congratulations {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: 1000;
+  background: rgb(255, 255, 255, 0.9);
+  border: 29x solid #4caf50;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+
+  .balloons {
+    position: relative;
+    height: 200px;
+    overflow: hidden;
+
+    .balloon {
+      position: absolute;
+      bottom: 0;
+      width: 50px;
+      height: 70px;
+      border-radius: 25px 25px 0 0;
+      animation: float 2s ease-in-out infinite;
+
+      &.red {
+        color: #ff0000;
+        left: 0%;
+        animation-delay: 0s;
+      }
+      &.yellow {
+        color: #ffff00;
+        left: 25%;
+        animation-delay: 0.5s;
+      }
+      &.green {
+        color: #008000;
+        left: 50%;
+        animation-delay: 1s;
+      }
+      &.blue {
+        color: #0000ff;
+        left: 80%;
+        animation-delay: 1.5s;
+      }
+    }
+  }
+
+  @keyframes float {
+    0% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-50px);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+}

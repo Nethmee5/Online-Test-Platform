@@ -1,89 +1,95 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './index.scss';
 import ArrowRightAltIcon from '@mui/icons-material/ArrowRightAlt';
 import RadioButtonUncheckedIcon from '@mui/icons-material/RadioButtonUnchecked';
+import questions from './questions';
+import Alert from '@mui/material/Alert';
 
 const Test = () => {
+  const navigate = useNavigate();
+  const [selectedAnswers, setSelectedAnswers] = useState({});
+  const [error, setError] = useState('');
+  const [isSubmitDisabled, setIsSubmitDisabled] = useState(true);
+
+  const handleRadioChange = (questionId, option) => {
+    setSelectedAnswers((prev) => ({
+      ...prev,
+      [questionId]: option,
+    }));
+  };
+  const handleReset = () => {
+    setSelectedAnswers({});
+    setError('');
+  };
+  const handleSubmit = () => {
+    const notansweredQuestions = questions.filter(
+      (ques) => !selectedAnswers[ques.id]
+    );
+
+    if (notansweredQuestions.length > 0) {
+      setError(
+        `Please answer all the questions. You are not answered ${notansweredQuestions.length} questions.`
+      );
+      return;
+    }
+
+    const score = Object.keys(selectedAnswers).reduce((acc, questionId) => {
+      const selectedOption = selectedAnswers[questionId];
+      const correctOption = questions.find(
+        (q) => q.id === parseInt(questionId)
+      ).correct;
+
+      return acc + (selectedOption === correctOption ? 1 : 0);
+    }, 0);
+
+    navigate('/dashboard', { state: { score, enrolled: true } });
+  };
+  useEffect(() => {
+    const allAnswered = questions.every((ques) => selectedAnswers[ques.id]);
+    setIsSubmitDisabled(!allAnswered);
+  }, [selectedAnswers]);
   return (
     <div className="test-q-container">
       <p className="test-title">
-        Circle the correct answer from 1 - 12 by drag and drop the circle on top of the
-        corect answer from here,
-        <span><ArrowRightAltIcon className='arrow-right'/></span>
-        <span><RadioButtonUncheckedIcon className='circle-icon'/></span>
+        Select the correct answer by checking the check box.
       </p>
-      <div className="q-container">
-        <p>1. 17 rounded off to the nearest 10 is.. </p>
-        <ol className="type">
-          <li className="a-box">10</li>
-          <li className="a-box">20</li>
-          <li className="a-box">17</li>
-        </ol>
-      </div>
-      <div className="q-container">
-        <p>1. 17 rounded off to the nearest 10 is.. </p>
-        <ol className="type">
-          <li className="a-box">10</li>
-          <li className="a-box">20</li>
-          <li className="a-box">17</li>
-        </ol>
-      </div>
-      <div className="q-container">
-        <p>1. 17 rounded off to the nearest 10 is.. </p>
-        <ol className="type">
-          <li className="a-box">10</li>
-          <li className="a-box">20</li>
-          <li className="a-box">17</li>
-        </ol>
-      </div>
-      <div className="q-container">
-        <p>1. 17 rounded off to the nearest 10 is.. </p>
-        <ol className="type">
-          <li className="a-box">10</li>
-          <li className="a-box">20</li>
-          <li className="a-box">17</li>
-        </ol>
-      </div>
-      <div className="q-container">
-        <p>1. 17 rounded off to the nearest 10 is.. </p>
-        <ol className="type">
-          <li className="a-box">10</li>
-          <li className="a-box">20</li>
-          <li className="a-box">17</li>
-        </ol>
-      </div>
-      <div className="q-container">
-        <p>1. 17 rounded off to the nearest 10 is.. </p>
-        <ol className="type">
-          <li className="a-box">10</li>
-          <li className="a-box">20</li>
-          <li className="a-box">17</li>
-        </ol>
-      </div>
-      <div className="q-container">
-        <p>1. 17 rounded off to the nearest 10 is.. </p>
-        <ol className="type">
-          <li className="a-box">10</li>
-          <li className="a-box">20</li>
-          <li className="a-box">17</li>
-        </ol>
-      </div>
-      <div className="q-container">
-        <p>1. 17 rounded off to the nearest 10 is.. </p>
-        <ol className="type">
-          <li className="a-box">10</li>
-          <li className="a-box">20</li>
-          <li className="a-box">17</li>
-        </ol>
-      </div>
+      {error && <Alert severity="error">{error}</Alert>}
+      {Array.isArray(questions) &&
+        questions.map((ques, index) => (
+          <div className="q-container" key={ques.id}>
+            <p>
+              {index + 1}. {ques.question}
+            </p>
+            <ul className>
+              {ques.options.map((option) => (
+                <li key={option}>
+                  <label>
+                    <input
+                      type="radio"
+                      name={`question-${ques.id}`}
+                      checked={selectedAnswers[ques.id] === option}
+                      onChange={() => handleRadioChange(ques.id, option)}
+                    />
+                    {option}
+                  </label>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
       <div className="footer-btns">
-      <button className="btn-reset">
-              RESET
-       </button>
-       <button className="btn-submit">
-              SUBMIT
-       </button>
-       </div>
+        <button className="btn-reset" onClick={handleReset}>
+          RESET
+        </button>
+        <button
+          className="btn-submit"
+          onClick={handleSubmit}
+          disabled={isSubmitDisabled}
+        >
+          SUBMIT
+        </button>
+      </div>
     </div>
   );
 };
