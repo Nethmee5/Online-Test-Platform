@@ -69,7 +69,7 @@ const questions = [
     id: 12,
     question: '999 rounded off to the nearest 10 is..',
     options: ['990', '1,000', '909'],
-    correct: '1000',
+    correct: '1,000',
   },
 ];
 
