@@ -8,7 +8,6 @@ const Test = () => {
   const navigate = useNavigate();
   const [selectedAnswers, setSelectedAnswers] = useState({});
   const [error, setError] = useState('');
-  const [isSubmitDisabled, setIsSubmitDisabled] = useState(true);
 
   const handleRadioChange = (questionId, option) => {
     setSelectedAnswers((prev) => ({
@@ -43,10 +42,6 @@ const Test = () => {
 
     navigate('/dashboard', { state: { score, enrolled: true } });
   };
-  useEffect(() => {
-    const allAnswered = questions.every((ques) => selectedAnswers[ques.id]);
-    setIsSubmitDisabled(!allAnswered);
-  }, [selectedAnswers]);
   return (
     <div className="test-q-container">
       <p className="test-title">
