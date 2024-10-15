@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './index.scss';
-import ArrowRightAltIcon from '@mui/icons-material/ArrowRightAlt';
-import RadioButtonUncheckedIcon from '@mui/icons-material/RadioButtonUnchecked';
 import questions from './questions';
 import Alert from '@mui/material/Alert';
 
@@ -85,7 +83,6 @@ const Test = () => {
         <button
           className="btn-submit"
           onClick={handleSubmit}
-          disabled={isSubmitDisabled}
         >
           SUBMIT
         </button>
