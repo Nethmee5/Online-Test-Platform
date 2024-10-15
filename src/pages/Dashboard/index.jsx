@@ -1,12 +1,33 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './index.scss';
-import right_arrow from 'assets/icons/right_arrow.png';
+import ArrowCircleRightIcon from '@mui/icons-material/ArrowCircleRight';
+import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import ResultBox from 'components/ResultBox';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import { useNavigate } from 'react-router-dom';
 
 const Dashboard = () => {
+  const navigate = useNavigate();
+
+  const [enrolled, setEnrolled] = useState(false);
+  const [expanded, setExpanded] = useState(false);
+
+  const handleStart = () => {
+    navigate('/test');
+  };
+  const handleExpand = () => {
+    setExpanded(true);
+  };
+  const handleClose = () => {
+    setExpanded(false);
+  };
+
   return (
     <div className="dashboard-container">
       <div className="test-container">
+      {enrolled && 
+            <h3>You have successfully completed this test!</h3>          
+          }
         <div className="test-list">
           <div className="left-text">
             <h2>Rounding Off to Nearest 10</h2>
@@ -14,19 +35,34 @@ const Dashboard = () => {
           </div>
 
           <div className="right-text">
-            <button className="btn-start">
-              START
-              <span>
-                <img
-                  src={right_arrow}
-                  className="right-arrow"
-                  alt="right-arrow"
-                />
-              </span>
-            </button>
+            {!enrolled ? (
+              <button className="btn-start" onClick={handleStart}>
+                START
+                <span>
+                  <ArrowCircleRightIcon
+                    className="start-arrow"
+                    alt="start-arrow"
+                  />
+                </span>
+              </button>
+            ) : (
+              <button className="btn-expand" onClick={handleExpand}>
+                Show
+                <span>
+                  {expanded ? (
+                    <ExpandMoreIcon className="close-arrow" alt="close-arrow" />
+                  ) : (
+                    <KeyboardArrowRightIcon
+                      className="expand-arrow"
+                      alt="expand-arrow"
+                    />
+                  )}
+                </span>
+              </button>
+            )}
           </div>
         </div>
-        <ResultBox />
+        {expanded ? <ResultBox onHandleClose = {handleClose} /> : null}
       </div>
     </div>
   );

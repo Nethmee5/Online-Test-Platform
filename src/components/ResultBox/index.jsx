@@ -1,7 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './index.scss';
 
-const ResultBox = () => {
+const ResultBox = ({onHandleClose}) => {
+  const [expanded, setExpanded] = useState(false);
+
+  const handleClose = () =>{
+   onHandleClose(true);
+  }
+
   return (
     <div className="result-container">
       <div className="result-list">
@@ -9,7 +15,7 @@ const ResultBox = () => {
         <div className="display-name">Nethmee Kumararatne</div>
         <div className="score">score : </div>
         <div className="display-score">100</div>
-        <button className="btn-exit">Exit</button>
+        <button className="btn-exit" onClick={handleClose}>Exit</button>
       </div>
     </div>
   );

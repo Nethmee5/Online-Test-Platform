@@ -1,6 +1,6 @@
 import React from 'react';
-import user from 'assets/icons/user.png';
 import './index.scss';
+import PersonIcon from '@mui/icons-material/Person';
 
 const Header = () => {
   return (
@@ -8,7 +8,7 @@ const Header = () => {
       <div className="title">Mathinenglish.com</div>
       <div className="user-icon">
         <span>
-          <img src={user} className="user-icon" alt="user-icon" />
+          <PersonIcon className="user-icon" alt="user-icon" />
         </span>
       </div>
     </div>
