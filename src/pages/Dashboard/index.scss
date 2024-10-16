@@ -1,4 +1,8 @@
 .dashboard-container {
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
   margin-bottom: 100px;
   .test-container {
     width: 100%;
@@ -6,7 +10,8 @@
     display: grid;
 
     .test-list {
-      width: 780px;
+      max-width: 780px;
+      width: 100%;
       margin-top: 20px;
       background-color: #12b735;
       padding: 10px;
@@ -21,6 +26,7 @@
       }
       .right-text {
         margin-left: auto;
+        margin-right: auto;
         display: flex;
         padding: 20px;
         .btn-start,
@@ -53,6 +59,45 @@
             width: 25px;
             height: 25px;
           }
+        }
+      }
+    }
+  }
+  @media only screen and (max-width: 768px) {
+    .test-list {
+      flex-direction: column;
+      padding: 10px;
+
+      .right-text {
+        margin-top: 10px;
+        padding: 10px;
+
+        .btn-start,
+        .btn-expand {
+          width: 100%;
+          font-size: 14px;
+        }
+      }
+    }
+  }
+  @media only screen and (max-width: 480px) {
+    .test-list {
+      padding: 5px;
+
+      .left-text {
+        padding: 5px;
+        h4 {
+          font-size: 16px;
+        }
+      }
+
+      .right-text {
+        padding: 5px;
+
+        .btn-start,
+        .btn-expand {
+          width: 100%;
+          font-size: 12px;
         }
       }
     }
