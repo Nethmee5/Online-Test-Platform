@@ -1,0 +1,58 @@
+.login-container {
+    display: flex;
+    flex-wrap: wrap;
+    height: 100vh; /* Full viewport height */
+    overflow: hidden; /* Prevents scrolling within this container */
+    padding: 50px; /* Adjust padding to fit content within 100vh */
+    box-sizing: border-box; /* Ensures padding doesn’t cause overflow */
+  
+    .content-container {
+       border-top:  outset; /* Top border */
+        border-left:  outset; /* Left border */
+        border-bottom:  outset; /* Bottom border */
+        border-right: none; /* No right border */
+
+        /* Add shadow effect to make the border stand out */
+        box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3), -4px -4px 10px rgba(255, 255, 255, 0.4);
+
+        /* Optional: Add a subtle gradient to the border */
+
+        /* Optional: Add a slight border-radius to make it look smoother */
+         border-radius: 10px 0 0 10px; 
+    }
+
+    .content-container, .img-container {
+        flex: 1;
+        min-width: 300px;
+        min-height: 600px;
+    }
+
+    .img-container {
+        background-image: url('../../assets/images/login_image.jpg'); /* Replace with your image path */
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+
+        border-top:  outset; /* Top border */
+        border-left:  none; /* Left border */
+        border-bottom:  outset; /* Bottom border */
+        border-right: outset; /* No right border */
+
+        /* Add shadow effect to make the border stand out */
+        box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3), -4px -4px 10px rgba(255, 255, 255, 0.4);
+
+        /* Optional: Add a subtle gradient to the border */
+
+        /* Optional: Add a slight border-radius to make it look smoother */
+         border-radius: 0 10px 10px 0; 
+}
+
+    @media (max-width: 768px) {
+        flex-direction: column;
+
+        .content-container,
+        .img-container {
+            min-width: 100%;
+        }
+    }
+}
