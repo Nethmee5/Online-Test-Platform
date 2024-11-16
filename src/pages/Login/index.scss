@@ -1,58 +1,144 @@
 .login-container {
-    display: flex;
-    flex-wrap: wrap;
-    height: 100vh; /* Full viewport height */
-    overflow: hidden; /* Prevents scrolling within this container */
-    padding: 50px; /* Adjust padding to fit content within 100vh */
-    box-sizing: border-box; /* Ensures padding doesn’t cause overflow */
-  
-    .content-container {
-       border-top:  outset; /* Top border */
-        border-left:  outset; /* Left border */
-        border-bottom:  outset; /* Bottom border */
-        border-right: none; /* No right border */
+  display: flex;
+  flex-wrap: wrap;
+  height: 100vh; /* Full viewport height */
+  overflow: hidden; /* Prevents scrolling within this container */
+  padding: 30px; /* Adjust padding to fit content within 100vh */
+  box-sizing: border-box; /* Ensures padding doesn’t cause overflow */
 
-        /* Add shadow effect to make the border stand out */
-        box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3), -4px -4px 10px rgba(255, 255, 255, 0.4);
+  .content-container {
+    border-top: outset; /* Top border */
+    border-left: outset; /* Left border */
+    border-bottom: outset; /* Bottom border */
+    border-right: none; /* No right border */
 
-        /* Optional: Add a subtle gradient to the border */
+    /* Add shadow effect to make the border stand out */
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3),
+      -4px -4px 10px rgba(255, 255, 255, 0.4);
 
-        /* Optional: Add a slight border-radius to make it look smoother */
-         border-radius: 10px 0 0 10px; 
+    /* Optional: Add a subtle gradient to the border */
+
+    /* Optional: Add a slight border-radius to make it look smoother */
+    border-radius: 10px 0 0 10px;
+    .logo-image {
+      width: 100px;
+      height: 100px;
     }
+    .login-details {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      margin: 0 auto;
+      .title,
+      .title-2 {
+        text-align: center;
+        margin-bottom: 5px;
+        margin-top: 0px;
+      }
+      .sign-in1,
+      .sign-in2 {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid #908a8a;
+        border-radius: 10px;
+        font-weight: bold;
+        width: 200px;
+        padding: 10px;
+        margin-left: 20px 0;
+        margin-top: 20px;
+      }
 
-    .content-container, .img-container {
-        flex: 1;
-        min-width: 300px;
-        min-height: 600px;
-    }
+      .google-icon,
+      .linkedin-icon {
+        margin-right: 8px;
+        width: 25px;
+      }
 
-    .img-container {
-        background-image: url('../../assets/images/login_image.jpg'); /* Replace with your image path */
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-position: center;
-
-        border-top:  outset; /* Top border */
-        border-left:  none; /* Left border */
-        border-bottom:  outset; /* Bottom border */
-        border-right: outset; /* No right border */
-
-        /* Add shadow effect to make the border stand out */
-        box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3), -4px -4px 10px rgba(255, 255, 255, 0.4);
-
-        /* Optional: Add a subtle gradient to the border */
-
-        /* Optional: Add a slight border-radius to make it look smoother */
-         border-radius: 0 10px 10px 0; 
-}
-
-    @media (max-width: 768px) {
+      .email,
+      .password {
+        display: flex;
         flex-direction: column;
-
-        .content-container,
-        .img-container {
-            min-width: 100%;
+        width: 100%;
+        max-width: 300px;
+        margin-top: 30px;
+       
+        label {
+          font-weight: bold;
+          text-align: left;
         }
+        input {
+          padding: 8px;
+          border: 1px solid #ccc;
+          border-radius: 5px;
+          margin-top: 5px;
+        }
+      }
+      .submit {
+        width: 100%;
+        max-width: 300px;
+        padding: 10px;
+        background-color: #000;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        font-weight: bold;
+        cursor: pointer;
+        margin-top: 20px;
+
+        &:hover{
+         background-color: #e7d3d3;
+         color: #000;
+        }
+      }
+      p {
+        margin-top: 10px;
+        font-size: 12px;
+        .login{
+            font-weight: bold;
+            text-decoration: underline;
+            cursor: pointer;
+
+        }
+      }
     }
+  }
+
+  .content-container,
+  .img-container {
+    flex: 1;
+    min-width: 300px;
+    min-height: 600px;
+  }
+
+  .img-container {
+    background-image: url('../../assets/images/login_image.jpg'); /* Replace with your image path */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    border-top: outset; /* Top border */
+    border-left: none; /* Left border */
+    border-bottom: outset; /* Bottom border */
+    border-right: outset; /* No right border */
+
+    /* Add shadow effect to make the border stand out */
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3),
+      -4px -4px 10px rgba(255, 255, 255, 0.4);
+
+    /* Optional: Add a subtle gradient to the border */
+
+    /* Optional: Add a slight border-radius to make it look smoother */
+    border-radius: 0 10px 10px 0;
+  }
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+
+    .content-container,
+    .img-container {
+      min-width: 100%;
+    }
+  }
 }
